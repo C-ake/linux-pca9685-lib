@@ -1,0 +1,3 @@
+[submodule "lib/userspace-i2c-linux"]
+	path = lib/userspace-i2c-linux
+	url = https://github.com/C-ake/userspace-i2c-linux.git
