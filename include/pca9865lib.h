@@ -126,6 +126,17 @@ extern "C" {
 #define PCA9865LIB_SUCCESS ((int16_t) 0)
 #define PCA9865LIB_ERROR ((int16_t) -1)
 
+/* Misc Defines */
+#define PCA9865_MAX_PWM_VALUE ((uint16_t) 4096U)
+#define PCA9865_MAX_PWM_CHANNELS ((uint8_t) 16U)
+#define PCA9865_MAX_PRESCALER ((uint8_t) 0xFFU)
+#define PCA9865_MIN_PRESCALER ((uint8_t) 0x03U)
+#define PCA9865_INT_CLOCK_FREQ ((uint32_t) 25000000U)
+
+
+#define COMPUTE_PRESCALER_VALUE(frequency) \
+    (uint8_t) ((PCA9865_INT_CLOCK_FREQ / (PCA9865_MAX_PWM_VALUE * frequency)) - 1U)
+
 
 /* Typedefs */
 

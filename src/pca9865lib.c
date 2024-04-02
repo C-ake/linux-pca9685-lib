@@ -233,6 +233,11 @@ int16_t PCA9865_SetPrescaler(PCA9865I2CConf_t *controllerConf, uint8_t prescale)
         return PCA9865LIB_ERROR;
     }
 
+    if (prescale < PCA9865_MIN_PRESCALER)
+    {
+        prescale = PCA9865_MIN_PRESCALER;
+    }
+
     /* Writing prescale reg */
     if (PCA9865WriteReg(controllerConf, PCA9865_PRE_SCALE_REG_ADDR, prescale) != PCA9865LIB_SUCCESS)
     {
@@ -251,6 +256,11 @@ int16_t PCA9865_GetPWM(PCA9865I2CConf_t *controllerConf, uint8_t channel,
 
     /* Verifying input */
     if (controllerConf == NULL || onValue == NULL || offValue == NULL)
+    {
+        return PCA9865LIB_ERROR;
+    }
+
+    if (channel > PCA9865_MAX_PWM_CHANNELS)
     {
         return PCA9865LIB_ERROR;
     }
@@ -294,6 +304,16 @@ int16_t PCA9865_SetPWM(PCA9865I2CConf_t *controllerConf, uint8_t channel,
     
         /* Verifying input */
         if (controllerConf == NULL)
+        {
+            return PCA9865LIB_ERROR;
+        }
+
+        if (channel > PCA9865_MAX_PWM_CHANNELS)
+        {
+            return PCA9865LIB_ERROR;
+        }
+
+        if (onValue > PCA9865_MAX_PWM_VALUE || offValue > PCA9865_MAX_PWM_VALUE)
         {
             return PCA9865LIB_ERROR;
         }
@@ -378,6 +398,11 @@ int16_t PCA9865_SetAllPWM(PCA9865I2CConf_t *controllerConf, uint16_t onValue,
         
     /* Verifying input */
     if (controllerConf == NULL)
+    {
+        return PCA9865LIB_ERROR;
+    }
+
+    if (onValue > PCA9865_MAX_PWM_VALUE || offValue > PCA9865_MAX_PWM_VALUE)
     {
         return PCA9865LIB_ERROR;
     }
