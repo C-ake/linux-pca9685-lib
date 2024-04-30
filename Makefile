@@ -1,5 +1,5 @@
-# linux-pca9865-lib Makefile
-# This makefile build the linux-pca9865-lib library
+# linux-pca9685-lib Makefile
+# This makefile build the linux-pca9685-lib library
 # as both a static and shared library.
 # The library is built from the source files in the src directory.
 
@@ -8,7 +8,7 @@ CC = $(CROSS_COMPILE)gcc
 CFLAGS = -Wall -Wextra -Werror -std=gnu99 -g
 
 # Define the library name
-LIB_NAME = libpca9865
+LIB_NAME = libpca9685
 
 # Define the library source files folder
 LIB_SRC_DIR = src
